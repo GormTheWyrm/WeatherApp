@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeatherApp</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="assets/style.css">
+
+</head>
+
+<body>
+    <!-- 
+        2 collumns
+        left column contains search bar
+        below search bar is stashed search history
+
+        right collumn contains details on current city
+        city name+date;     temp, humidity, wind speed, UV index
+        below current city is 5 day forecast
+    
+    -->
+
+
+    <div class="container-fluid">
+        <!--  contains header across entire page-->
+        <h1>Weather Dashboard</h1>
+        <!-- need to align center this header, add some margins -->
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <div>
+                <h3>Search for a City</h3>
+
+                <!--searchbar copied from bootstrap...probably needs fixing... add a width google mb-3-->
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Search..." aria-label="Search"
+                        aria-describedby="button-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- end of left div -->
+        <div class="col-md">
+            <div id="current-city">
+                <h2 id="city-name"></h2>
+                city container
+                    <!-- hopefully can just input city name...and date... -->
+
+
+            </div>
+            5 day forecast - not in a container
+            <!-- 5 containers, inline-block? -->
+
+
+        </div> <!-- end of right div -->
+
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+        <script src="assets/script.js"></script>
+
+</body>
+
+</html>
