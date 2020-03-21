@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-        <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/style.css">
 
 </head>
 
@@ -31,7 +31,8 @@
         <!-- need to align center this header, add some margins -->
     </div>
     <div class="row">
-        <div class="col-sm">
+        <div class="col-sm-4 left-side">
+            <!-- start of left side div -->
             <div>
                 <h3>Search for a City</h3>
 
@@ -39,23 +40,81 @@
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Search..." aria-label="Search"
                         aria-describedby="button-addon2">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+                    <div class="city-holder">
+                        <button class="btn btn-outline-secondary" type="submit" id="search-button">Search</button>
+                        <!-- figure out how to make search input smaller -->
+
+                        <!-- could use a span...  -->
+                        <!-- <span class="algolia-autocomplete"
+                            style="display: inline-block; position: relative; direction: ltr;"><input
+                                class="form-control ds-input" id="search-input" role="combobox" aria-expanded="false"
+                                aria-owns="algolia-autocomplete-listbox-0"
+                                style="vertical-align: top; position: relative;" dir="auto" spellcheck="false"
+                                aria-autocomplete="list" aria-label="Search for..." type="search"
+                                placeholder="Search..." autocomplete="off" data-docs-version="4.4">
+                            <pre aria-hidden="true"
+                                style='text-transform: none; text-indent: 0px; letter-spacing: normal; font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; white-space: pre; visibility: hidden; position: absolute;'></pre>
+                            <span class="ds-dropdown-menu" id="algolia-autocomplete-listbox-0" role="listbox"
+                                style="left: 0px; top: 100%; right: auto; display: none; position: absolute; z-index: 100;">
+                                <div class="ds-dataset-1"></div>
+                            </span></span> -->
+                            
+
                     </div>
                 </div>
             </div>
 
         </div> <!-- end of left div -->
-        <div class="col-md">
+        <div class="col-sm-7 right-side">
+            <!-- will likely have to fiddle with bootstrap class to fix size -->
             <div id="current-city">
-                <h2 id="city-name"></h2>
+                <span id="city-name">test</span> <span id="today"></span>
+                <!-- needs to add a space before the day... -->
+                <br>
+                <span id="city-temp">Temperature: </span> <span id="city-temp"></span> <span>%</span>
+                
                 city container
-                    <!-- hopefully can just input city name...and date... -->
+                <!-- hopefully can just input city name...and date... -->
 
 
             </div>
-            5 day forecast - not in a container
+
+            <h2>Five Day Forecast</h2>
             <!-- 5 containers, inline-block? -->
+            <div class="card" style="width: 18rem;">
+                <h5 class="card-title">Date Goes here</h5>
+                <p class="card-symbol">Symbol</p>    <!-- switch out for a real symbol... -->
+                <p class="card-temp"> Sample temp</p>
+                <p class="card-humidity">Sample humidity</p>               
+            </div>
+
+            <div class="card" style="width: 18rem;">
+                <h5 class="card-title">Date Goes here</h5>
+                <p class="card-symbol">Symbol</p>    <!-- switch out for a real symbol... -->
+                <p class="card-temp"> Sample temp</p>
+                <p class="card-humidity">Sample humidity</p>               
+            </div>
+
+            <div class="card" style="width: 18rem;">
+                <h5 class="card-title">Date Goes here</h5>
+                <p class="card-symbol">Symbol</p>    <!-- switch out for a real symbol... -->
+                <p class="card-temp"> Sample temp</p>
+                <p class="card-humidity">Sample humidity</p>               
+            </div>
+
+            <div class="card" style="width: 18rem;">
+                <h5 class="card-title">Date Goes here</h5>
+                <p class="card-symbol">Symbol</p>    <!-- switch out for a real symbol... -->
+                <p class="card-temp"> Sample temp</p>
+                <p class="card-humidity">Sample humidity</p>               
+            </div>
+
+            <div class="card" style="width: 18rem;">
+                <h5 class="card-title">Date Goes here</h5>
+                <p class="card-symbol">Symbol</p>    <!-- switch out for a real symbol... -->
+                <p class="card-temp"> Sample temp</p>
+                <p class="card-humidity">Sample humidity</p>               
+            </div>
 
 
         </div> <!-- end of right div -->
@@ -74,7 +133,7 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
 
-        <script src="assets/script.js"></script>
+    <script src="assets/script.js"></script>
 
 </body>
 

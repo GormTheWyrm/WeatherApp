@@ -1,1 +1,37 @@
 /* body{color: brown;} */
+#current-city{
+    height: 550px;
+    width: 95%;
+    margin: 12px, 6px;
+    border: solid lightslategray;
+
+}
+.right-side{
+    border: solid lightsteelblue;
+    /* right: -10px; */
+    margin-left: 5px;
+    margin-right: auto;
+
+}
+.left-side{
+    border: solid lightcoral;
+    /* for some reason this was off the left side of the page until I fixed it */
+    margin-left: 20px;
+    /* padding-left: 5px; */
+    position: relative;
+    /* left: 10px; */
+}
+.card{
+    position: relative;
+    display: inline-block;
+    /* margin: 5px; */
+    /* margin: auto; */
+    margin: 10px auto auto 5px;
+    width: 150px !important;
+}
+#city-name, #today{
+    font-size: x-large;
+    font-weight: 600;
+}
+
+/* {width:430px !important;} to limit search */
