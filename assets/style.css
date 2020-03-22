@@ -15,7 +15,7 @@ body{background-color: black;
     margin-right: auto;
 }
 .left-side{
-    border: solid lightcoral;
+    border: solid lightsteelblue;
     /* for some reason this was off the left side of the page until I fixed it */
     margin-left: 20px;
     /* padding-left: 5px; */
@@ -30,7 +30,9 @@ body{background-color: black;
     margin: 10px auto auto 5px;
     width: 155px !important;
     padding-left: 5px;
-    
+    background-color: lightseagreen;
+    /* background-color: teal; */
+    background-color: darkseagreen;
 
 }
 #city-name, #today{

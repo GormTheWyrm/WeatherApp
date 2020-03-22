@@ -149,7 +149,7 @@ function getForecast(searchTerm) {
     var queryUrl = baseUrl + searchTerm + "&" + apiKey;
     // console.log(queryUrl);
 
-    
+
 
 
     /*     
@@ -165,12 +165,6 @@ function getForecast(searchTerm) {
      */
 
 
-    //      <div class="card">
-    //      <h5 class="card-title">Date Goes here</h5>
-    //      <p class="card-symbol">Symbol</p> <!-- switch out for a real symbol... -->
-    //      <p class="card-temp"> Sample temp</p>
-    //      <p class="card-humidity">Sample humidity</p>
-    //      </div>
 
     $.ajax({
         url: queryUrl,
@@ -180,16 +174,9 @@ function getForecast(searchTerm) {
         console.log(response);
 
         var forecastDiv = $("#forecast-div");
-        forecastDiv.empty();
-        // function createF(input) {
-        //     var newH = $("<h2>").text(input);
-        //     weatherCity.append(newH);
-        // }
+        forecastDiv.empty();    //empties div so new items have a nice new empty div
 
-        
-        //need day, temp, humidity, icon...
 
-//clear div; #forecast-div
 
         for (i = 0; i < 40; i = i + 8) {
 
@@ -198,32 +185,38 @@ function getForecast(searchTerm) {
             forecastTemp = forecastTemp * 9 / 5;
             forecastTemp = forecastTemp + 32;
             forecastTemp = forecastTemp.toFixed(2);
-
             var forecastHum = response.list[i].main.humidity;
+            //create link fore the forecast symbol to open; the links differ by ##N/D (day v night)
+            var forecastSym = response.list[i].weather[0].icon;
+            var forecastSymbol = "https://openweathermap.org/img/wn/" + forecastSym + "@2x.png";
+            console.log(forecastSymbol);
 
-            // var forecastSym;
-            // console.log(forecastSym);
+
+
 
             var forecastTime = response.list[i].dt_txt;
             var forecastLoc = $("<div>").addClass("card");
             //forecastDiv = container
-           createF(forecastTime + "<br>");
-           //create symbol here
+            createF(forecastTime + "<br>");
+            //create symbol here
+            var symbolImage = $("<img>").attr("src",forecastSymbol);
+            forecastLoc.append(symbolImage);
 
 
-           createF("Temperature: " + forecastTemp + " F <br>");
-           createF("Humidity: " + forecastHum + " % <br>");
 
-            
+            createF("Temperature: " + forecastTemp + " F <br>");
+            createF("Humidity: " + forecastHum + " % <br>");
+
+
             function createF(input) {
                 var newF = $("<span>").html(input);
-                    //wase .text
+                //wase .text
                 forecastLoc.append(newF);
             }
             forecastDiv.append(forecastLoc);
 
         }
-        
+
 
 
     });
@@ -303,8 +296,4 @@ $("document").ready($(".side-city").on("click", function () {
 
 
 
-        //search for city
-            //if valid response add to left
-        //click on left location
-            //stores name of city in... local storage under what name?
 
