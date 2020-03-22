@@ -54,3 +54,4 @@ You are required to submit the following for review:
 
 
 <!-- I need to add in the ability to delete locations -->
+<!-- need to make search bar delete content after submission -->
