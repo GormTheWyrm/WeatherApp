@@ -38,28 +38,14 @@
 
                 <!--searchbar copied from bootstrap...probably needs fixing... add a width google mb-3-->
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Search..." aria-label="Search"
+                    <input id="search-input" type="text" class="form-control" placeholder="Search..." aria-label="Search"
                         aria-describedby="search-button">
                     <button class="btn btn-outline-secondary" type="submit" id="search-button">Search</button>
                 </div>
                 <div class="city-holder">
 
-                    <!-- figure out how to make search input smaller -->
 
-                    <!-- could use a span...  -->
-                    <!-- <span class="algolia-autocomplete"
-                            style="display: inline-block; position: relative; direction: ltr;"><input
-                                class="form-control ds-input" id="search-input" role="combobox" aria-expanded="false"
-                                aria-owns="algolia-autocomplete-listbox-0"
-                                style="vertical-align: top; position: relative;" dir="auto" spellcheck="false"
-                                aria-autocomplete="list" aria-label="Search for..." type="search"
-                                placeholder="Search..." autocomplete="off" data-docs-version="4.4">
-                            <pre aria-hidden="true"
-                                style='text-transform: none; text-indent: 0px; letter-spacing: normal; font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; white-space: pre; visibility: hidden; position: absolute;'></pre>
-                            <span class="ds-dropdown-menu" id="algolia-autocomplete-listbox-0" role="listbox"
-                                style="left: 0px; top: 100%; right: auto; display: none; position: absolute; z-index: 100;">
-                                <div class="ds-dataset-1"></div>
-                            </span></span> -->
+                    
 
 
                 </div>
@@ -70,7 +56,7 @@
         <div class="col-sm-7 right-side">
             <!-- will likely have to fiddle with bootstrap class to fix size -->
             <div id="current-city">
-                <span id="city-name">test</span> <span id="today"></span>
+                <span id="city-name"></span> <span id="today"></span>
                 <!-- needs to add a space before the day... -->
                 <br>
                 <span id="city-temp">Temperature: </span> <span id="city-temp"></span> <span>%</span>
@@ -83,35 +69,35 @@
 
             <h2>Five Day Forecast</h2>
             <!-- 5 containers, inline-block? -->
-            <div class="card" style="width: 18rem;">
+            <div class="card" >
                 <h5 class="card-title">Date Goes here</h5>
                 <p class="card-symbol">Symbol</p> <!-- switch out for a real symbol... -->
                 <p class="card-temp"> Sample temp</p>
                 <p class="card-humidity">Sample humidity</p>
             </div>
 
-            <div class="card" style="width: 18rem;">
+            <div class="card">
                 <h5 class="card-title">Date Goes here</h5>
                 <p class="card-symbol">Symbol</p> <!-- switch out for a real symbol... -->
                 <p class="card-temp"> Sample temp</p>
                 <p class="card-humidity">Sample humidity</p>
             </div>
 
-            <div class="card" style="width: 18rem;">
+            <div class="card">
                 <h5 class="card-title">Date Goes here</h5>
                 <p class="card-symbol">Symbol</p> <!-- switch out for a real symbol... -->
                 <p class="card-temp"> Sample temp</p>
                 <p class="card-humidity">Sample humidity</p>
             </div>
 
-            <div class="card" style="width: 18rem;">
+            <div class="card">
                 <h5 class="card-title">Date Goes here</h5>
                 <p class="card-symbol">Symbol</p> <!-- switch out for a real symbol... -->
                 <p class="card-temp"> Sample temp</p>
                 <p class="card-humidity">Sample humidity</p>
             </div>
 
-            <div class="card" style="width: 18rem;">
+            <div class="card">
                 <h5 class="card-title">Date Goes here</h5>
                 <p class="card-symbol">Symbol</p> <!-- switch out for a real symbol... -->
                 <p class="card-temp"> Sample temp</p>

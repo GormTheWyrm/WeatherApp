@@ -1,5 +1,8 @@
 # WeatherApp
 
+https://github.com/GormTheWyrm/WeatherApp
+https://gormthewyrm.github.io/WeatherApp/
+
 
 
 # 06 Server-Side APIs: Weather Dashboard
@@ -48,3 +51,6 @@ You are required to submit the following for review:
 
 - - -
 © 2019 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
+
+
+<!-- I need to add in the ability to delete locations -->
