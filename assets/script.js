@@ -81,6 +81,11 @@ function getWeather(searchTerm) {
     var queryUrl = baseUrl + searchTerm + apiKey;
     console.log(queryUrl);
 
+    function createH(input) {
+        var newH = $("<h2>").text(input);
+        weatherCity.append(newH);
+    }
+
     $.ajax({
         url: queryUrl,
         method: "GET"
@@ -88,18 +93,44 @@ function getWeather(searchTerm) {
         console.log("this will display current weather");
         console.log(response); //this works
 
-        console.log(response.wind.speed); //work
-        console.log(response.main.temp);    //this worked
-        //response.list.temp ...convert to F
-        console.log(response.main.humidity);
-        //humidity
-        
         //uv index
 
-       
+        var mySpeed = response.wind.speed;
+        var myTemp = parseInt(response.main.temp);
+        myTemp = myTemp - 272.15;
+        myTemp = myTemp * 9 / 5;
+        myTemp = myTemp + 32;
+        myTemp = myTemp.toFixed(2);
+        var myHumidity = response.main.humidity;
+        var myName = response.name;
+
+
+
+        //clear container
+        weatherCity = $("#current-city");
+        weatherCity.empty();
+        //add weather details
+        //needs a date
+        createH(myName);
+        createH("Temperature:  " + myTemp + " Degrees F");
+        createH("Wind Speed:  " + mySpeed + " MPH");
+        createH("Humidity:  " + myHumidity + "%");
+
+        /* **************************************** */
+
+        // I need to get geographic locations from the city in this function to call UV!
+        var uvUrl = searchTerm + apiKey;
+        // https://api.openweathermap.org/data/2.5/uvi?appid={appid}&lat={lat}&lon={lon}
+        //might need to slow this down...
+        // $.ajax({
+        //     url: uvUrl,
+        //     method: "GET"
+        // }).then(function (response) {
+        //     console.log("this will display UV");
+        // });
+
 
     });
-
 }
 
 //get 5 day forecast for search term
@@ -115,7 +146,7 @@ function getForecast(searchTerm) {
     }).then(function (response) {
         console.log("this will display forecast");
         console.log(response);
-//fill out info for 5 day forecast
+        //fill out info for 5 day forecast
 
 
     });
@@ -125,14 +156,14 @@ function getLocations() {
 
     onlineLocations = localStorage.getItem("jsonLocations");
     console.log(onlineLocations);
-    if (onlineLocations != null){
-    myLocations = JSON.parse(onlineLocations);
-    console.log(onlineLocations);
-    console.log("parsedlocations = " + myLocations);
+    if (onlineLocations != null) {
+        myLocations = JSON.parse(onlineLocations);
+        console.log(onlineLocations);
+        console.log("parsedlocations = " + myLocations);
         //myLocations should not be nulll... why is it null here?
-    console.log(myLocations[0]);
-    }   else{
-    myLocations[0] = "richmond";
+        console.log(myLocations[0]);
+    } else {
+        myLocations[0] = "richmond";
     }
 
     //grabs locations from local storage
@@ -209,4 +240,3 @@ $("document").ready($(".side-city").on("click", function () {
         //click on left location
             //stores name of city in... local storage under what name?
 
-        //

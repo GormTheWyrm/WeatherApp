@@ -1,6 +1,8 @@
-/* body{color: brown;} */
+body{background-color: black;
+
+}
 #current-city{
-    height: 550px;
+    height: 350px;
     width: 95%;
     margin: 12px, 6px;
     border: solid lightslategray;
@@ -33,5 +35,23 @@
     font-size: x-large;
     font-weight: 600;
 }
-
-/* {width:430px !important;} to limit search */
+.side-city{
+    border: dashed lightgray;
+    font-size: xx-large;
+     margin: 5px auto 5px 5px; 
+     /* max-width: 300px; */
+    
+}
+.my-header{
+    background-color: dimgray;
+    color: whitesmoke;
+    text-align: center;
+}
+.bckgrnd{
+    background-color: lightslategrey;
+    min-height: 85vh;
+}
+#search-button{
+        color: orange;
+        background-color:  darkseagreen;
+}
