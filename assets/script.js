@@ -73,7 +73,7 @@ function searchCity() {
     return $("#search-input").val();
 }
 
-
+//  *********** WORK ON THIS NOW *****
 //gets weather of search term
 function getWeather(searchTerm) {
 
@@ -86,8 +86,17 @@ function getWeather(searchTerm) {
         method: "GET"
     }).then(function (response) {
         console.log("this will display current weather");
-        console.log(response);
+        console.log(response); //this works
 
+        console.log(response.wind.speed); //work
+        console.log(response.main.temp);    //this worked
+        //response.list.temp ...convert to F
+        console.log(response.main.humidity);
+        //humidity
+        
+        //uv index
+
+       
 
     });
 
@@ -106,6 +115,8 @@ function getForecast(searchTerm) {
     }).then(function (response) {
         console.log("this will display forecast");
         console.log(response);
+//fill out info for 5 day forecast
+
 
     });
 }
@@ -146,10 +157,7 @@ function getLocations() {
 
 
 
-function setLocation() {
-    //puts a new location into local storage
 
-}
 function clearLocations() {
     $(".city-holder").empty();
 }
