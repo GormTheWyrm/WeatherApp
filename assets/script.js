@@ -254,6 +254,17 @@ function clearLocations() {
     $(".city-holder").empty();
 }
 
+function resetFunction(){
+    console.log("resetting...");
+    //need to remove items from myLocations[]
+    myLocations.length = 0;
+    // for (i=0; i<myLocations.length; i++){
+
+    // }
+
+localStorage.removeItem("jsonLocations");
+    clearLocations();
+}
 
 
 
@@ -272,6 +283,7 @@ $("document").ready($("#search-button").on("click", function () {
     //function should then set location in the "city-holder" div
     // var myCity = "Richmond";
     //gets weather of search term
+ 
     getWeather(myCity);
     //get 5 day forecast for search term
     getForecast(myCity);
@@ -291,6 +303,12 @@ $("document").ready($(".side-city").on("click", function () {
     var sideSearch = this.textContent;
     getWeather(sideSearch);
     getForecast(sideSearch);
+
+}));
+$("document").ready($("#reset-button").on("click", function () {
+    resetFunction();
+    
+   
 
 }));
 

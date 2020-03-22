@@ -4,7 +4,11 @@ https://github.com/GormTheWyrm/WeatherApp
 https://gormthewyrm.github.io/WeatherApp/
 
 # Overview
-This app is designed to display the current weather as well as the 5 day forecast
+This app uses the [OpenWeather API](https://openweathermap.org/api) to to display the current weather as well as the 5 day forecast for searched locations. The searched location names are stored in local storage as a json object as well as on the page so that users can quickly bring up each of the searched locations.
+Information displayed for selected location: wind speed, temperature, UV index, and country. The UV index has colored background to that turns red when the UV index is above 10 to indicate dangerous UV levels. 
+        The five day forecast of that location including temperature, humidity and an icon.
+        The five day forecast reflects roughly a 3 hour period of time rather than the entire day.
+
 
 ## User Story
 
@@ -14,7 +18,7 @@ I WANT to see the weather outlook for multiple cities
 SO THAT I can plan a trip accordingly
 ```
 
-## Acceptance Criteria
+## Instructions for creation
 
 ```
 GIVEN a weather dashboard with form inputs
@@ -36,31 +40,12 @@ THEN I am presented with the last searched city forecast
 
 
 
-# 06 Server-Side APIs: Weather Dashboard
-
-Developers are often tasked with retrieving data from another application's API and using it in the context of their own. Third-party APIs allow developers to access their data and functionality by making requests with specific parameters to a URL. Your challenge is to build a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS.
-
-Use the [OpenWeather API](https://openweathermap.org/api) to retrieve weather data for cities. The documentation includes a section called "How to start" that will provide basic setup and usage instructions. Use `localStorage` to store any persistent data.
 
 
 
-The following image demonstrates the application functionality:
-
-![weather dashboard demo](./Assets/06-server-side-apis-homework-demo.png)
-
-## Review
-
-You are required to submit the following for review:
-
-* The URL of the deployed application.
-
-* The URL of the GitHub repository. Give the repository a unique name and include a README describing the project.
-
-- - -
-© 2019 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
 
 
-<!-- I need to add in the ability to delete locations -->
+
+<!-- make search work with "enter" -->
 <!-- need to make search bar delete content after submission -->
-
-<!-- current bug; cannot select side city after adding a new one -->
+<!-- make weather appear after searching -->
