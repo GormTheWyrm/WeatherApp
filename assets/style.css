@@ -2,7 +2,7 @@ body{background-color: black;
 
 }
 #current-city{
-    height: 350px;
+    min-height: 250px;
     width: 95%;
     margin: 12px, 6px;
     border: solid lightslategray;
@@ -28,7 +28,10 @@ body{background-color: black;
     /* margin: 5px; */
     /* margin: auto; */
     margin: 10px auto auto 5px;
-    width: 150px !important;
+    width: 155px !important;
+    padding-left: 5px;
+    
+
 }
 #city-name, #today{
     font-size: x-large;

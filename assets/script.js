@@ -70,7 +70,8 @@ function searchCity() {
     jsonLocations = JSON.stringify(myLocations);
     localStorage.setItem("jsonLocations", jsonLocations);
 
-    return $("#search-input").val();
+    // return $("#search-input").val();
+    return tempVar;
 }
 
 //  *********** WORK ON THIS NOW *****
@@ -79,7 +80,7 @@ function getWeather(searchTerm) {
 
     var baseUrl = "https://api.openweathermap.org/data/2.5/weather?q=";
     var queryUrl = baseUrl + searchTerm + "&" + apiKey;
-    console.log(queryUrl);
+    // console.log(queryUrl);
 
     function createH(input) {
         var newH = $("<h2>").text(input);
@@ -91,6 +92,7 @@ function getWeather(searchTerm) {
         method: "GET"
     }).then(function (response) {
         // console.log("this will display current weather");
+        // console.log(response);
         var mySpeed = response.wind.speed;
         var myTemp = parseInt(response.main.temp);
         myTemp = myTemp - 272.15;
@@ -129,13 +131,13 @@ function getWeather(searchTerm) {
             var newSpan = $("<span>").text(myUV);
             weatherCity.append(newUV);
             newUV.append(newSpan);
-            if (parseInt(myUV) >= 10){
+            if (parseInt(myUV) >= 10) {
                 newSpan.attr("style", "background-color: lightcoral");
-            } else{
+            } else {
                 newSpan.attr("style", "background-color: royalblue");
             }
 
-         });
+        });
 
     });
 }
@@ -145,7 +147,30 @@ function getForecast(searchTerm) {
 
     var baseUrl = "https://api.openweathermap.org/data/2.5/forecast?q=";
     var queryUrl = baseUrl + searchTerm + "&" + apiKey;
-    console.log(queryUrl);
+    // console.log(queryUrl);
+
+    
+
+
+    /*     
+    &cnt=3  limits responses
+    To use JavaScript code you can transfer callback functionName to JSONP callback.
+    Examples of API calls:
+    api.openweathermap.org/data/2.5/weather?q=London,uk&callback=test
+    
+    icons
+    https://openweathermap.org/img/wn/04d@2x.png
+            maybe change out the "04d"
+            40/5=8
+     */
+
+
+    //      <div class="card">
+    //      <h5 class="card-title">Date Goes here</h5>
+    //      <p class="card-symbol">Symbol</p> <!-- switch out for a real symbol... -->
+    //      <p class="card-temp"> Sample temp</p>
+    //      <p class="card-humidity">Sample humidity</p>
+    //      </div>
 
     $.ajax({
         url: queryUrl,
@@ -153,7 +178,52 @@ function getForecast(searchTerm) {
     }).then(function (response) {
         console.log("this will display forecast");
         console.log(response);
-        //fill out info for 5 day forecast
+
+        var forecastDiv = $("#forecast-div");
+        forecastDiv.empty();
+        // function createF(input) {
+        //     var newH = $("<h2>").text(input);
+        //     weatherCity.append(newH);
+        // }
+
+        
+        //need day, temp, humidity, icon...
+
+//clear div; #forecast-div
+
+        for (i = 0; i < 40; i = i + 8) {
+
+            var forecastTemp = response.list[i].main.temp;
+            forecastTemp = forecastTemp - 271.15;
+            forecastTemp = forecastTemp * 9 / 5;
+            forecastTemp = forecastTemp + 32;
+            forecastTemp = forecastTemp.toFixed(2);
+
+            var forecastHum = response.list[i].main.humidity;
+
+            // var forecastSym;
+            // console.log(forecastSym);
+
+            var forecastTime = response.list[i].dt_txt;
+            var forecastLoc = $("<div>").addClass("card");
+            //forecastDiv = container
+           createF(forecastTime + "<br>");
+           //create symbol here
+
+
+           createF("Temperature: " + forecastTemp + " F <br>");
+           createF("Humidity: " + forecastHum + " % <br>");
+
+            
+            function createF(input) {
+                var newF = $("<span>").html(input);
+                    //wase .text
+                forecastLoc.append(newF);
+            }
+            forecastDiv.append(forecastLoc);
+
+        }
+        
 
 
     });
@@ -167,7 +237,6 @@ function getLocations() {
         myLocations = JSON.parse(onlineLocations);
         console.log(onlineLocations);
         console.log("parsedlocations = " + myLocations);
-        //myLocations should not be nulll... why is it null here?
         console.log(myLocations[0]);
     } else {
         myLocations[0] = "richmond";
@@ -206,18 +275,17 @@ $("document").ready(getLocations());
 $("document").ready($("#search-button").on("click", function () {
     console.log("button clicked");
     myCity = searchCity();
-
     //need a function to set the city. USE TEMP CITY FOR NOW ****FIX
     //function should then set location in the "city-holder" div
     // var myCity = "Richmond";
     //gets weather of search term
-
     getWeather(myCity);
-
     //get 5 day forecast for search term
     getForecast(myCity);
     clearLocations();
     getLocations();
+    location.reload(true);
+
 }));
 //...
 //add locations from local history
