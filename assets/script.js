@@ -48,7 +48,7 @@ var newDrinkDiv = $("<div>" + drinkList[i] + "</div>");
 
 /*  ********************** *** Global VARIABLES *** ********************    */
 
-var apiKey = "&appid=3d35d44dc67848bfaece240f47e0c4df";
+var apiKey = "appid=3d35d44dc67848bfaece240f47e0c4df";
 
 // api.openweathermap.org/data/2.5/weather
 // api.openweathermap.org/data/2.5/forecast
@@ -78,7 +78,7 @@ function searchCity() {
 function getWeather(searchTerm) {
 
     var baseUrl = "https://api.openweathermap.org/data/2.5/weather?q=";
-    var queryUrl = baseUrl + searchTerm + apiKey;
+    var queryUrl = baseUrl + searchTerm + "&" + apiKey;
     console.log(queryUrl);
 
     function createH(input) {
@@ -90,11 +90,7 @@ function getWeather(searchTerm) {
         url: queryUrl,
         method: "GET"
     }).then(function (response) {
-        console.log("this will display current weather");
-        console.log(response); //this works
-
-        //uv index
-
+        // console.log("this will display current weather");
         var mySpeed = response.wind.speed;
         var myTemp = parseInt(response.main.temp);
         myTemp = myTemp - 272.15;
@@ -103,32 +99,43 @@ function getWeather(searchTerm) {
         myTemp = myTemp.toFixed(2);
         var myHumidity = response.main.humidity;
         var myName = response.name;
-
-
+        var myCountry = response.sys.country;
 
         //clear container
         weatherCity = $("#current-city");
         weatherCity.empty();
-        //add weather details
+
+        //add weather details to current city div
         //needs a date
-        createH(myName);
+        createH(myName + ", " + myCountry);
         createH("Temperature:  " + myTemp + " Degrees F");
         createH("Wind Speed:  " + mySpeed + " MPH");
         createH("Humidity:  " + myHumidity + "%");
 
         /* **************************************** */
 
-        // I need to get geographic locations from the city in this function to call UV!
-        var uvUrl = searchTerm + apiKey;
+        var lat = response.coord.lat;
+        var lon = response.coord.lon;
+        var uvUrl = "https://api.openweathermap.org/data/2.5/uvi?" + apiKey + "&lat=" + lat + "&lon=" + lon;
         // https://api.openweathermap.org/data/2.5/uvi?appid={appid}&lat={lat}&lon={lon}
         //might need to slow this down...
-        // $.ajax({
-        //     url: uvUrl,
-        //     method: "GET"
-        // }).then(function (response) {
-        //     console.log("this will display UV");
-        // });
+        $.ajax({
+            url: uvUrl,
+            method: "GET"
+        }).then(function (uvResponse) {
+            // console.log("this will display UV");
+            var myUV = uvResponse.value;
+            var newUV = $("<h2>").text("UV index:  ");
+            var newSpan = $("<span>").text(myUV);
+            weatherCity.append(newUV);
+            newUV.append(newSpan);
+            if (parseInt(myUV) >= 10){
+                newSpan.attr("style", "background-color: lightcoral");
+            } else{
+                newSpan.attr("style", "background-color: royalblue");
+            }
 
+         });
 
     });
 }
@@ -137,7 +144,7 @@ function getWeather(searchTerm) {
 function getForecast(searchTerm) {
 
     var baseUrl = "https://api.openweathermap.org/data/2.5/forecast?q=";
-    var queryUrl = baseUrl + searchTerm + apiKey;
+    var queryUrl = baseUrl + searchTerm + "&" + apiKey;
     console.log(queryUrl);
 
     $.ajax({
@@ -176,14 +183,6 @@ function getLocations() {
 
 
     }
-    //hardcoding richmond; hardcoded elsewhere
-    // var richmond = $("<div>").addClass("side-city");
-    // richmond.text("Richmond");
-    // $(".city-holder").append(richmond);
-    //create class side-city
-
-    // var newDrinkDiv = $("<div>" + drinkList[i] + "</div>");
-
 }
 
 
@@ -200,7 +199,8 @@ function clearLocations() {
 
 //load locations from local storage
 $("document").ready(getLocations());
-//not working yet; will grab locations from local storage and put them on the left div
+//need to implment troubleshooting so that invalid cities are not added...
+//need to prevent blank entries
 
 //search-button; will pull up weather and forecast of searched term
 $("document").ready($("#search-button").on("click", function () {
