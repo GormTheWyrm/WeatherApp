@@ -39,13 +39,15 @@
                 <!--searchbar copied from bootstrap...probably needs fixing... add a width google mb-3-->
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Search..." aria-label="Search"
-                        aria-describedby="button-addon2">
-                    <div class="city-holder">
-                        <button class="btn btn-outline-secondary" type="submit" id="search-button">Search</button>
-                        <!-- figure out how to make search input smaller -->
+                        aria-describedby="search-button">
+                    <button class="btn btn-outline-secondary" type="submit" id="search-button">Search</button>
+                </div>
+                <div class="city-holder">
 
-                        <!-- could use a span...  -->
-                        <!-- <span class="algolia-autocomplete"
+                    <!-- figure out how to make search input smaller -->
+
+                    <!-- could use a span...  -->
+                    <!-- <span class="algolia-autocomplete"
                             style="display: inline-block; position: relative; direction: ltr;"><input
                                 class="form-control ds-input" id="search-input" role="combobox" aria-expanded="false"
                                 aria-owns="algolia-autocomplete-listbox-0"
@@ -58,10 +60,10 @@
                                 style="left: 0px; top: 100%; right: auto; display: none; position: absolute; z-index: 100;">
                                 <div class="ds-dataset-1"></div>
                             </span></span> -->
-                            
 
-                    </div>
+
                 </div>
+
             </div>
 
         </div> <!-- end of left div -->
@@ -72,7 +74,7 @@
                 <!-- needs to add a space before the day... -->
                 <br>
                 <span id="city-temp">Temperature: </span> <span id="city-temp"></span> <span>%</span>
-                
+
                 city container
                 <!-- hopefully can just input city name...and date... -->
 
@@ -83,37 +85,37 @@
             <!-- 5 containers, inline-block? -->
             <div class="card" style="width: 18rem;">
                 <h5 class="card-title">Date Goes here</h5>
-                <p class="card-symbol">Symbol</p>    <!-- switch out for a real symbol... -->
+                <p class="card-symbol">Symbol</p> <!-- switch out for a real symbol... -->
                 <p class="card-temp"> Sample temp</p>
-                <p class="card-humidity">Sample humidity</p>               
+                <p class="card-humidity">Sample humidity</p>
             </div>
 
             <div class="card" style="width: 18rem;">
                 <h5 class="card-title">Date Goes here</h5>
-                <p class="card-symbol">Symbol</p>    <!-- switch out for a real symbol... -->
+                <p class="card-symbol">Symbol</p> <!-- switch out for a real symbol... -->
                 <p class="card-temp"> Sample temp</p>
-                <p class="card-humidity">Sample humidity</p>               
+                <p class="card-humidity">Sample humidity</p>
             </div>
 
             <div class="card" style="width: 18rem;">
                 <h5 class="card-title">Date Goes here</h5>
-                <p class="card-symbol">Symbol</p>    <!-- switch out for a real symbol... -->
+                <p class="card-symbol">Symbol</p> <!-- switch out for a real symbol... -->
                 <p class="card-temp"> Sample temp</p>
-                <p class="card-humidity">Sample humidity</p>               
+                <p class="card-humidity">Sample humidity</p>
             </div>
 
             <div class="card" style="width: 18rem;">
                 <h5 class="card-title">Date Goes here</h5>
-                <p class="card-symbol">Symbol</p>    <!-- switch out for a real symbol... -->
+                <p class="card-symbol">Symbol</p> <!-- switch out for a real symbol... -->
                 <p class="card-temp"> Sample temp</p>
-                <p class="card-humidity">Sample humidity</p>               
+                <p class="card-humidity">Sample humidity</p>
             </div>
 
             <div class="card" style="width: 18rem;">
                 <h5 class="card-title">Date Goes here</h5>
-                <p class="card-symbol">Symbol</p>    <!-- switch out for a real symbol... -->
+                <p class="card-symbol">Symbol</p> <!-- switch out for a real symbol... -->
                 <p class="card-temp"> Sample temp</p>
-                <p class="card-humidity">Sample humidity</p>               
+                <p class="card-humidity">Sample humidity</p>
             </div>
 
 
@@ -122,7 +124,7 @@
     </div>
 
 
-
+    <!-- bootstrap 1st one includes jquery-->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>
@@ -133,6 +135,9 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
 
+    <!-- ajax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- my script -->
     <script src="assets/script.js"></script>
 
 </body>
