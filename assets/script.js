@@ -64,12 +64,11 @@ var myLocations = ["Richmond"];
 //gets searchTerm, sets a new myLocation[x], saves location to local memory!
 //ideally limit this to valid cities
 function searchCity() {
-    console.log($("#search-input").val());
+    // console.log($("#search-input").val());
     tempVar = $("#search-input").val();
     myLocations[myLocations.length] = tempVar;
     jsonLocations = JSON.stringify(myLocations);
     localStorage.setItem("jsonLocations", jsonLocations);
-
     // return $("#search-input").val();
     return tempVar;
 }
@@ -136,9 +135,9 @@ function getWeather(searchTerm) {
             } else {
                 newSpan.attr("style", "background-color: royalblue");
             }
-
+            return false;
         });
-
+        return false;
     });
 }
 
@@ -170,8 +169,8 @@ function getForecast(searchTerm) {
         url: queryUrl,
         method: "GET"
     }).then(function (response) {
-        console.log("this will display forecast");
-        console.log(response);
+        // console.log("this will display forecast");
+        // console.log(response);
 
         var forecastDiv = $("#forecast-div");
         forecastDiv.empty();    //empties div so new items have a nice new empty div
@@ -189,7 +188,7 @@ function getForecast(searchTerm) {
             //create link fore the forecast symbol to open; the links differ by ##N/D (day v night)
             var forecastSym = response.list[i].weather[0].icon;
             var forecastSymbol = "https://openweathermap.org/img/wn/" + forecastSym + "@2x.png";
-            console.log(forecastSymbol);
+            // console.log(forecastSymbol);
 
 
 
@@ -217,7 +216,7 @@ function getForecast(searchTerm) {
 
         }
 
-
+    return false;
 
     });
 }
@@ -225,12 +224,12 @@ function getForecast(searchTerm) {
 function getLocations() {
 
     onlineLocations = localStorage.getItem("jsonLocations");
-    console.log(onlineLocations);
+    // console.log(onlineLocations);
     if (onlineLocations != null) {
         myLocations = JSON.parse(onlineLocations);
-        console.log(onlineLocations);
-        console.log("parsedlocations = " + myLocations);
-        console.log(myLocations[0]);
+        // console.log(onlineLocations);
+        // console.log("parsedlocations = " + myLocations);
+        // console.log(myLocations[0]);
     } else {
         myLocations[0] = "richmond";
     }
@@ -255,7 +254,7 @@ function clearLocations() {
 }
 
 function resetFunction(){
-    console.log("resetting...");
+    // console.log("resetting...");
     //need to remove items from myLocations[]
     myLocations.length = 0;
     // for (i=0; i<myLocations.length; i++){
@@ -277,18 +276,22 @@ $("document").ready(getLocations());
 
 //search-button; will pull up weather and forecast of searched term
 $("document").ready($("#search-button").on("click", function () {
-    console.log("button clicked");
+    // console.log("button clicked");
     myCity = searchCity();
     //need a function to set the city. USE TEMP CITY FOR NOW ****FIX
     //function should then set location in the "city-holder" div
-    // var myCity = "Richmond";
+
+
     //gets weather of search term
- 
     getWeather(myCity);
     //get 5 day forecast for search term
     getForecast(myCity);
+    //empties div
     clearLocations();
+    //puts locations in side city
     getLocations();
+    
+    // BUG if I do nto reset this, the side cities are not able to be clicked
     location.reload(true);
 
 }));
@@ -298,8 +301,8 @@ $("document").ready($("#search-button").on("click", function () {
 
 //add click function for side city class!
 $("document").ready($(".side-city").on("click", function () {
-    console.log("touched the city");
-    console.log(this.textContent);
+    // console.log("touched the city");
+    // console.log(this.textContent);
     var sideSearch = this.textContent;
     getWeather(sideSearch);
     getForecast(sideSearch);
