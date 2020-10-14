@@ -22,4 +22,4 @@ SO THAT I can plan a trip accordingly
 
 Navigate to https://gormthewyrm.github.io/WeatherApp/.
 Search for a city via the search bar.
-Click on the name of the city in the left section and the current frecast and 5 day forecast will apear in the right section.
+Click on the name of the city in the left section and the current forecast and 5 day forecast will apear in the right section.
